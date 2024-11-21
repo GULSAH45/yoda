@@ -118,21 +118,32 @@ let characters = [{
   "homeworld": "naboo"
 }]
 
-
+// karakterler kapalı gelsin diye
 
 let characterRender = false;
-const characterRow = document.getElementById("characterRow");
-const toggleButton = document.getElementById("toggleBtn");
+const characterRow = document.getElementById("characterRow")
+const toggleButton = document.getElementById("toggleBtn")
+const radioInput = document.getElementById("RadioInput")
+
+// kapalı gelen şeye bastık açıldı 
+
 function toggleRender(){
   if (characterRender){
-    characterRender = false;
-characterRow.innerHTML = "";
-toggleButton.textContent = "SHOW";
+    characterRender = false
+
+//  karakter satırını boşalttık
+    
+characterRow.innerHTML = ""
+
+toggleButton.textContent = "SHOW"
+
+// açıkken bastık kapandı
 
   } else {
     characters.map((armut)=> { 
-      characterRow.innerHTML +=  `<div class="col-lg-4 col-sm-6 mb-5" id="filterDiv" data-id="${armut.homeworld}">
-            <div class="card bg-black fw-bold text-warning border-light" style="width: 18rem;">
+      characterRow.innerHTML +=  
+      `<div class="col-lg-4 col-sm-6 mb-5" id="filterDiv" data-id="${armut.homeworld}">
+            <div class="card bg-black fw-bold text-light border-light" style="width: 18rem;">
               <img src="${armut.pic}" class="card-img-top" alt="..." style="height: 350px;">
               <div class="card-body">
                 <p class="card-text">${armut.name}</p>
@@ -146,7 +157,50 @@ toggleButton.textContent = "SHOW";
   }
 }
 
+// burdan sonrası radio
 
 
 
+const characterMemleket = characters.map((memleket) => {
+  return memleket.homeworld
+});
 
+const uniqueMemleket = [...new Set(characterMemleket)]
+function createInput(){
+  characterRow.innerHTML = "";
+  uniqueMemleket.map((homeworld) => {`   <div class="form-check mb-4 col-lg-3 col-md-6 col-sm-12">
+          <input type="radio" class="form-check-input" value="${homeworld}" name="exampleRadioInput">
+          <label for="exampleRadioInput" class="form-check-label text-white fs-6">${homeworld}</label>
+        </div>`
+    
+  })
+}
+
+
+// let filteredHomeworld
+//   function filterCharacters(homeworld) {
+//     filteredHomeworld = characters.filter(
+//       (armut) => armut.homeworld == homeworld
+//     );
+//     characterRow.innerHTML = filteredHomeworld.map(
+//       (
+//         armut
+//       ) => ` <div class="col-lg-4 col-sm-6 mb-5" id="filterDiv" data-id="${armut.homeworld}">
+//             <div class="card bg-black 
+//            fw-bold text-warning border-light" style="width: 50rem;">
+//               <img src="${armut.pic}" class="card-img-top" alt="..." style="height: 350px;">
+//               <div class="card-body">
+//                 <p class="card-text">${armut.name}</p>
+//                 <p class="card-text">${armut.homeworld}</p>
+//               </div>
+//             </div>
+//           </div>`
+//     );
+//   }
+//   // Event listener for radio buttons
+//   characterRow.addEventListener("change", (event) => {
+//     if (event.target.name === "exampleRadioInput") {
+//       const selectedHomeworldId = event.target.value;
+//       filterCharacters(selectedHomeworldId);
+//     }
+//   });

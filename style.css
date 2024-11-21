@@ -5,17 +5,31 @@
 }
 
 body {
-  background-color: #6a7062;
+  display: flex;
   align-items: center;
 }
 
+.starimg {
+  background-image: url(starimg.jpg);
+  background-repeat: no-repeat;
+  background-size: 100%;
+  width: 100% !important;
+  height: 100vh !important;
+  position: fixed;
+  top: 0;
+  z-index: -1;
+}
 .container {
+  display: flex;
+  flex-direction: column;
   border: 5px solid #7ad602;
+
   justify-content: center;
   align-items: center;
 }
 
 #toggleBtn {
+  margin: 50px auto;
   background-color: #7ad602;
   color: white;
   padding: 30px 32px;
@@ -26,5 +40,4 @@ body {
   margin: 4px 2px;
   cursor: pointer;
   border-radius: 10px;
-  justify-content: center !important;
 }
